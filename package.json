@@ -1,0 +1,16 @@
+{
+  "name": "vuepress-analysis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs --open",
+    "analysis": "env VUEPRESS_ENV=developer && vuepress dev docs --temp .temp --debug --no-clear-screen"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vuepress": "^1.0.0-alpha.47"
+  }
+}
