@@ -143,7 +143,7 @@ module.exports = class App {
     // 采用了markdown-it和markdown-it-chain 返回markdown实例，TODO: 详细分析
     this.markdown = createMarkdown(this);
 
-    // TODO: 深入了解page生成过程
+    // 详见pages章节
     await this.resolvePages();
 
     // 运行所有的默认plugin

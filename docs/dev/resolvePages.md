@@ -78,3 +78,7 @@ if (headers.length) {
   this.headers = headers;
 }
 ```
+
+:::warning
+pages solve 并 push 到 this.page 后 page 去哪了？
+:::

@@ -259,7 +259,7 @@ module.exports = class DevProcess extends EventEmitter {
             "beforeDevServer",
             app,
             server
-          );\
+          );
         },
         after: (app, server) => {
           this.context.pluginAPI.applySyncOption("afterDevServer", app, server);
