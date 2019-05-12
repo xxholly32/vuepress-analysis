@@ -29,7 +29,8 @@ module.exports = {
           "/dev/createMarkdown",
           "/dev/resolvePages",
           "/dev/createServer",
-          "/dev/webpackconfig"
+          "/dev/webpackconfig",
+          "/dev/pluginAPI"
         ]
       }
     ]
