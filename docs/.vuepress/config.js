@@ -6,33 +6,51 @@ module.exports = {
     nav: [
       {
         text: "home",
-        link: "/"
-      }
-    ],
-    sidebar: [
-      ["/", "前言"],
-      {
-        title: "开始",
-        path: "/start/",
-        collapsable: false,
-        children: ["/start/env", "/start/cli"]
+        link: "/main/"
       },
       {
-        title: "vuepress dev",
-        path: "/dev/",
-        collapsable: false,
-        children: [
-          "/dev/start",
-          "/dev/createApp",
-          "/dev/process",
-          "/dev/dev",
-          "/dev/createMarkdown",
-          "/dev/resolvePages",
-          "/dev/createServer",
-          "/dev/webpackconfig",
-          "/dev/pluginAPI"
-        ]
+        text: "plugin",
+        link: "/plugin/"
       }
-    ]
+    ],
+    sidebar: {
+      "/main/": [
+        {
+          title: "开始",
+          path: "/main/start/",
+          collapsable: false,
+          children: ["/main/start/env", "/main/start/cli"]
+        },
+        {
+          title: "vuepress dev",
+          path: "/main/dev/",
+          collapsable: false,
+          children: [
+            "/main/dev/start",
+            "/main/dev/createApp",
+            "/main/dev/process",
+            "/main/dev/dev",
+            "/main/dev/createMarkdown",
+            "/main/dev/resolvePages",
+            "/main/dev/createServer",
+            "/main/dev/webpackconfig"
+          ]
+        }
+      ],
+      "/plugin/": [
+        {
+          title: "插件系统分析",
+          path: "/plugin/",
+          collapsable: false,
+          children: ["/plugin/pluginAPI"]
+        },
+        {
+          title: "内置插件",
+          path: "/plugin/",
+          collapsable: false,
+          children: ["/plugin/AliasOption"]
+        }
+      ]
+    }
   }
 };
