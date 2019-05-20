@@ -45,10 +45,22 @@ module.exports = {
           children: ["/plugin/pluginAPI"]
         },
         {
+          title: "插件扩展类型",
+          path: "/plugin/",
+          collapsable: false,
+          children: [
+            "/plugin/AliasOption",
+            "/plugin/DefineOption",
+            "/plugin/ClientDynamicModulesOption",
+            "/plugin/EnhanceAppFilesOptions",
+            "/plugin/GlobalUIComponentsOption"
+          ]
+        },
+        {
           title: "内置插件",
           path: "/plugin/",
           collapsable: false,
-          children: ["/plugin/AliasOption"]
+          children: ["/plugin/internal-layout-components"]
         }
       ]
     }

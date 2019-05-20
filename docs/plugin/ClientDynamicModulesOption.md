@@ -1,5 +1,7 @@
 # ClientDynamicModulesOption
 
+动态将`plugin`插件写入到`temp`文件中去，这里的动态是指一个动态的文件，包含了整个文件的内容，放到`temp`里面去。这样的好处是将一些`node_module`里面的文件引入到外部最终`webpack`可以解析并打印。还有一个[官方的使用解析](https://v1.vuepress.vuejs.org/zh/faq/#what-s-the-differences-between-the-clientdynamicmodules-and-enhanceappfiles)
+
 ```js
 module.exports = class ClientDynamicModulesOption extends AsyncOption {
   async apply(ctx) {
