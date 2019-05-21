@@ -1,29 +1,28 @@
 module.exports = {
   title: "vuepress-analysis",
   description: "let`s play vuepress",
-  base: "/",
+  base: "/vuepress-analysis/",
   themeConfig: {
     nav: [
-      {
-        text: "home",
-        link: "/main/"
-      },
+      { text: "首页", link: "/" },
       {
         text: "plugin",
         link: "/plugin/"
+      },
+      {
+        text: "Github",
+        link: "https://github.com/xxholly32/vuepress-analysis"
       }
     ],
     sidebar: {
-      "/main/": [
+      "/": [
         {
           title: "开始",
-          path: "/main/start/",
           collapsable: false,
-          children: ["/main/start/env", "/main/start/cli"]
+          children: ["/main/start/cli", "/main/start/require"]
         },
         {
           title: "vuepress dev",
-          path: "/main/dev/",
           collapsable: false,
           children: [
             "/main/dev/start",

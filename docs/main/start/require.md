@@ -1,5 +1,9 @@
-# 记录用到的一些库和使用技巧
+# 相关工具
 
+记录用到的一些库和主要作用
+
+- [cac](https://github.com/cacjs/cac)
+  和 commander 类似的命令行工具
 - [globby](https://github.com/sindresorhus/globby)
   深入遍历文件夹，并返回文件名
 - [gray-matter](https://github.com/jonschlinkert/gray-matter)

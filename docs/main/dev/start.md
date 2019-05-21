@@ -1,6 +1,10 @@
 # vuepress dev
 
+首先看下 dev 的命令
+
 ```js
+const { dev, build, eject } = require("@vuepress/core");
+
 cli
   .command(`dev [targetDir]`, "start development server")
   .option("-p, --port <port>", "use specified port (default: 8080)")
@@ -41,4 +45,21 @@ cli
 --silent                不输出任何内容
 --open                  启动完打开浏览器
 
+```
+
+是否输出到 `.temp` 文件中，如果不设置就默认写在 `node_modules`, 如果你不需要支持 ie 等低浏览器，可以不加；如果在 `node_modules` 里面的文件不会被 webpack 解析，如果需要解析要单独配置 `babel-loader`，特别是拿它来做 UI 库的 api，这块真的是相当的刺激。但好处的话 chrome 下的编译会减少一些。
+
+`wrapCommand(dev)` 最终是运行了 core 中的 dev 方法
+
+```js
+function createApp(options) {
+  logger.wait("Extracting site metadata...");
+  return new App(options);
+}
+
+async function dev(options) {
+  const app = createApp(options);
+  await app.process();
+  return app.dev();
+}
 ```
