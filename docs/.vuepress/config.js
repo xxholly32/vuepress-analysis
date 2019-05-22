@@ -7,7 +7,7 @@ module.exports = {
       { text: "首页", link: "/" },
       {
         text: "plugin",
-        link: "/plugin/"
+        link: "/plugin/pluginAPI"
       },
       {
         text: "Github",
@@ -15,27 +15,6 @@ module.exports = {
       }
     ],
     sidebar: {
-      "/": [
-        {
-          title: "开始",
-          collapsable: false,
-          children: ["/main/start/cli", "/main/start/require"]
-        },
-        {
-          title: "vuepress dev",
-          collapsable: false,
-          children: [
-            "/main/dev/start",
-            "/main/dev/createApp",
-            "/main/dev/process",
-            "/main/dev/dev",
-            "/main/dev/createMarkdown",
-            "/main/dev/resolvePages",
-            "/main/dev/createServer",
-            "/main/dev/webpackconfig"
-          ]
-        }
-      ],
       "/plugin/": [
         {
           title: "插件系统分析",
@@ -60,6 +39,32 @@ module.exports = {
           path: "/plugin/",
           collapsable: false,
           children: ["/plugin/internal-layout-components"]
+        }
+      ],
+
+      "/": [
+        {
+          title: "开始",
+          collapsable: false,
+          children: ["/main/start/cli", "/main/start/require"]
+        },
+        {
+          title: "vuepress dev",
+          collapsable: false,
+          children: [
+            "/main/dev/start",
+            "/main/dev/dev",
+            "/main/dev/createMarkdown",
+            "/main/dev/resolvePages"
+          ]
+        },
+        {
+          title: "webpack 配置解析",
+          collapsable: false,
+          children: [
+            "/main/webpack/createServer",
+            "/main/webpack/webpackconfig"
+          ]
         }
       ]
     }

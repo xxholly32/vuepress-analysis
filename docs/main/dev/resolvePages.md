@@ -1,4 +1,4 @@
-# resolvePages
+# resolvePages 解析
 
 在配置好`markdown`之后，后面肯定是解析所有的`pages`
 
