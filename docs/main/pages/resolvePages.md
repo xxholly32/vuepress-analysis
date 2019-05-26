@@ -1,8 +1,6 @@
 # resolvePages 解析
 
-在配置好`markdown`之后，后面肯定是解析所有的`pages`
-
-## resolvePages()
+## pages 文件获取
 
 ```js
 async resolvePages () {
@@ -29,9 +27,9 @@ async resolvePages () {
 }
 ```
 
-先是采用`globby`这个工具包获取在`['**/*.md', '**/*.vue', '!.vuepress', '!node_modules']`下的文件路径，并加入到 page 的行列
+先是采用`globby`这个工具包获取在`['**/*.md', '**/*.vue', '!.vuepress', '!node_modules']`下的文件路径，加入到数组 pageFiles 中
 
-## addPage
+## pages 处理解析
 
 ```js
 async addPage (options) {
@@ -49,13 +47,13 @@ async addPage (options) {
 }
 ```
 
-:::warning
-这里并没有直接解析`md`文件，那是什么时候呢？
-:::
+markdown: 是 markdown-chain-it 的配置
 
-## page.process
+computed: page 的整体解析器, 整合全局的 siteData 变量
 
-`new Pages`基本是一些参数的传递，`process` 里面一些处理巧妙的地方我提炼了出来
+enhancers: 返回还不是很确定，但 extendPageData 是[\$page 对象的扩展](https://v1.vuepress.vuejs.org/zh/plugin/option-api.html#extendpagedata)，如果不配置就是默认页面的内容。
+
+最终将所有解析完的页面放在 this.pages 下
 
 ```js
 // 采用gray-matter解析文本
@@ -78,3 +76,5 @@ if (headers.length) {
   this.headers = headers;
 }
 ```
+
+process 里面分了每章的段落，将 h2 和 h3 的段落做了提取。

@@ -1,4 +1,4 @@
-# dev 命令解析
+# dev 流程解析
 
 ## 主流程
 
@@ -15,7 +15,7 @@ async function dev(options) {
 }
 ```
 
-简单来说就是根据配置创建 app 实例，完成 app 的解析，最后 dev 执行 webpack
+简单来说就是根据配置创建 app 实例，app.process() 解析项目，最后 dev 执行 webpack-dev-server
 
 ## new App
 
@@ -78,7 +78,7 @@ async process () {
     // 采用了markdown-it和markdown-it-chain 返回markdown实例，单独有createMarkdown章节
     this.markdown = createMarkdown(this)
 
-    // 详见pages章节
+    // 详见 resolvePages 章节
     await this.resolvePages()
 
     // 运行所有的默认plugin

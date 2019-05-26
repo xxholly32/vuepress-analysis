@@ -54,9 +54,13 @@ module.exports = {
           children: [
             "/main/dev/start",
             "/main/dev/dev",
-            "/main/dev/createMarkdown",
-            "/main/dev/resolvePages"
+            "/main/dev/createMarkdown"
           ]
+        },
+        {
+          title: "pages 解析",
+          collapsable: false,
+          children: ["/main/pages/resolvePages", "/main/pages/internal-routes"]
         },
         {
           title: "webpack 配置解析",

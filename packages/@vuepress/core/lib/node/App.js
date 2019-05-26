@@ -391,7 +391,7 @@ module.exports = class App {
     options.permalinkPattern = this.siteConfig.permalink;
     const page = new Page(options, this);
     await page.process({
-      // 之前createmarkdown返回的markdown-it pares
+      // 之前createmarkdown返回的markdown-it parse
       markdown: this.markdown,
       // siteconfig 生成的 全局属性类并在此时创建实例，后面存在page的_computed中
       computed: new this.ClientComputedMixinConstructor(),
