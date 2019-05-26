@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev docs --open",
-    "analysis": "vuepress dev docs --temp .temp --debug --no-clear-screen"
+    "build": "vuepress build docs",
+    "analysis": "vuepress dev docs --temp .temp --debug --no-clear-screen",
+    "publish": "bash deploy.sh"
   },
   "keywords": [],
   "author": "",
