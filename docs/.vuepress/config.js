@@ -49,13 +49,14 @@ module.exports = {
           children: ["/main/start/cli", "/main/start/require"]
         },
         {
-          title: "vuepress dev",
+          title: "cli 命令",
           collapsable: false,
-          children: [
-            "/main/dev/start",
-            "/main/dev/dev",
-            "/main/dev/createMarkdown"
-          ]
+          children: ["/main/cli/start", "/main/cli/dev"]
+        },
+        {
+          title: "markdown 解析",
+          collapsable: false,
+          children: ["/main/markdown/createMarkdown"]
         },
         {
           title: "pages 解析",
