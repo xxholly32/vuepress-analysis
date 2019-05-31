@@ -12,4 +12,5 @@
   最小的标准化语言，这里主要配合`gray-matter`实现解析功能
 - [chokidar](https://github.com/paulmillr/chokidar)
   文件监听，如果有改变，抛出事件
-- [portfinder]
+- [PrismJS](https://github.com/PrismJS/prism)
+  代码高亮，支持多文件多皮肤
