@@ -17,12 +17,13 @@ vuepress 首次出现在人们视野中是 [Evan You](https://github.com/yyx9908
 ## 相关文献
 
 [VueNYC 中的演讲](https://www.youtube.com/watch?v=lIv1ItUzktc)
+
 [深入浅出 vuepress 系列](https://www.jianshu.com/p/c7b2966f9d3c)
 
 ## todo list
 
-- app.js 详细分析
 - webpack 的配置做分析
+- app.js 详细分析
 - 每次写完都要写总结
 - build 命令解析
 - theme 解析
