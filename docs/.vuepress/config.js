@@ -67,6 +67,7 @@ module.exports = {
           title: "webpack 配置解析",
           collapsable: false,
           children: [
+            "/main/webpack/configAnalysis",
             "/main/webpack/createServer",
             "/main/webpack/webpackconfig"
           ]

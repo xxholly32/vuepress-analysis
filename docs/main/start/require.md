@@ -14,3 +14,5 @@
   文件监听，如果有改变，抛出事件
 - [PrismJS](https://github.com/PrismJS/prism)
   代码高亮，支持多文件多皮肤
+- [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)
+  一个 webpack 的插件，将多个 js 中的 css 文件合并成一个 css 文件，本项目用于 build 时候的 css 文件抽离
