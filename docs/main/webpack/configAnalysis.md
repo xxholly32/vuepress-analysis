@@ -138,7 +138,7 @@ if (!isServer) {
 }
 ```
 
-dev 模式用 vue-style-loader，build 模式用 extract-css-loader。将多个 js 中的 css 文件合并成一个 css 文件
+dev 模式用 vue-style-loader，build 模式用 extract-css-loader，将多个 js 中的 css 文件合并成一个 css 文件
 
 具体查看官网的[构建流程](https://v1.vuepress.vuejs.org/zh/config/#%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B)
 
@@ -156,3 +156,41 @@ config.plugin("injections").use(require("webpack/lib/DefinePlugin"), [
   }
 ]);
 ```
+
+常亮定义，`VUEPRESS_TEMP_PATH`这 2 个文件还有点用，是取 temp 文件路径，其他 2 个基本没什么用挂在在 windows 下面
+
+## hmr
+
+```js
+config.plugin("hmr").use(require("webpack/lib/HotModuleReplacementPlugin"));
+```
+
+dev 的开发环境特有，用于热替换
+
+## html-webpack-plugin
+
+```js
+config
+  .plugin("html")
+  // using a fork of html-webpack-plugin to avoid it requiring webpack
+  // internals from an incompatible version.
+  .use(require("vuepress-html-webpack-plugin"), [
+    {
+      template: this.context.devTemplate
+    }
+  ]);
+```
+
+dev 开发环境特有，默认生成 html 模板文件
+
+## HeadPlugin
+
+dev 开发环境特有，用于修改 tag 标签数据
+
+## dev 配置
+
+```js
+config.entry("app").add(ctx.getLibFilePath("client/clientEntry.js"));
+```
+
+配置所有文件的入口，实例化 vue 的地方，和 vue-cli 的 main.js 比较像

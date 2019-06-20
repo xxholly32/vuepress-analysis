@@ -10,6 +10,10 @@ module.exports = {
         link: "/plugin/pluginAPI"
       },
       {
+        text: "vuepress官网",
+        link: "https://v1.vuepress.vuejs.org/zh"
+      },
+      {
         text: "Github",
         link: "https://github.com/xxholly32/vuepress-analysis"
       }
