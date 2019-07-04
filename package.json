@@ -7,12 +7,12 @@
     "dev": "vuepress dev docs --open",
     "build": "vuepress build docs",
     "analysis": "vuepress dev docs --temp .temp --debug --no-clear-screen",
-    "publish": "bash deploy.sh"
+    "release": "bash deploy.sh"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "vuepress": "^1.0.0-alpha.47"
+    "vuepress": "^1.0.0"
   }
 }

@@ -41,7 +41,7 @@ export const routes = [
     path: "/index.html",
     redirect: "/"
   },
-  ...{
+  {
     name: "v-02aefb2c",
     path: "/main/webpack/webpackconfig.html",
     component: GlobalLayout,
@@ -49,6 +49,7 @@ export const routes = [
       ensureAsyncComponentsLoaded("Layout", "v-02aefb2c").then(next);
     }
   },
+  ...,
   {
     path: "*",
     component: GlobalLayout
@@ -57,6 +58,13 @@ export const routes = [
 ```
 
 还有一个就是对应 pages 的 `internal-page-comonents`, 也是在.temp 文件件下面。
+
+::: tip
+其实生成这个文件就一目了然整个项目的结构了
+
+中间没有什么华丽的操作，运用了 2 个方法 `injectComponentOption` 和 `ensureAsyncComponentsLoaded`, 让整个 router 赋予了灵魂
+
+:::
 
 ```js
 /**
@@ -89,3 +97,9 @@ const router = new Router({
     ...
   })
 ```
+
+项目中把 routerBase 的配置也写在一个静态的 temp 里面
+
+## 总结
+
+这里是搭建 vuepress 网站地图的中心，将地图拆解成部分碎片并分布到 temp 文件中。设计的理念还是将非配置类需要的文件给抽离出来，并根据 config 和 router 去生产相应的代码，中间还夹杂了 global 控件，和将 theme 的相关控件也集成到里面

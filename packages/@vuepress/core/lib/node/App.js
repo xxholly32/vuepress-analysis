@@ -140,7 +140,7 @@ module.exports = class App {
     // 插件初始化 整理好加入到pluginApi的options中
     this.pluginAPI.initialize();
 
-    // 采用了markdown-it和markdown-it-chain 返回markdown实例，TODO: 详细分析
+    // 采用了markdown-it和markdown-it-chain 返回markdown实例，
     this.markdown = createMarkdown(this);
 
     // 详见pages章节
@@ -341,6 +341,7 @@ module.exports = class App {
     const themeConfigValue = this.getThemeConfigValue(configKey);
     themeAgreement = this.resolveThemeAgreementFile(themeAgreement);
 
+    // 按照顺序执行索取的数据，以取到第一个数据为准
     return fsExistsFallback(
       [
         siteConfigValue,

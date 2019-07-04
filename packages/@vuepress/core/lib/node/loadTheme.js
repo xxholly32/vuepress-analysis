@@ -48,7 +48,7 @@ module.exports = function loadTheme (ctx) {
   }
   logger.tip(applyTip + ' ...')
 
-  // debug theme repo/node_modules/@vuepress/theme-default
+  // debug @vuepress/theme-default repo/node_modules/@vuepress/theme-default
   logger.debug('theme', theme.name, theme.path)
   // debug parentTheme undefined undefined
   logger.debug('parentTheme', parentTheme.name, parentTheme.path)
