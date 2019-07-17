@@ -140,3 +140,18 @@ async dev () {
 ```
 
 这块逻辑主要是 webpack 的所有配置的生成，并执行 webpack-dev-server
+
+## 总结
+
+流程大致解析：
+
+1. 解析配置
+2. 加载模版、主题、布局
+3. 插件配置组合，初始化
+4. markdown 配置
+5. 解析并执行插件
+6. 启动 server
+
+所有的 confin.js 的配置在 3 个部分被解析，1 解析基础，2 解 themeconfig 和 components；5 解析 plugins
+
+plugin 在第 5 步的原因是将所有执行的步骤都变成了插件；所以可以理解为 1~4 都是在解析配置，只有 5，6 是真正在执行程序
