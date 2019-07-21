@@ -15,7 +15,7 @@ return app.dev();
 
 ## dev 和 build 的区分
 
-这里有 3 个文件 createBaseConfig , createClientConfig , createServerConfig 后面 2 个都继承与 base, 在 dev 调用了 createClientConfig， 在 build 的时候调用 createServerConfig 。来看看为什么，再解释下为什么这么调用。
+这里有 3 个文件 createBaseConfig , createClientConfig , createServerConfig 后面 2 个都继承与 base, 在 dev 调用了 createClientConfig， 在 build 的时候调用 createServerConfig 。
 
 ## base config
 
@@ -72,6 +72,10 @@ config.resolveLoader.set("symlinks", true).modules.merge(modulePaths);
 config.module.noParse(/^(vue|vue-router|vuex|vuex-router-sync)$/);
 ```
 
+::: tip
+后续的 client 源码中经常会出现@的引用
+:::
+
 ### 引入 loader
 
 ```js
@@ -106,9 +110,11 @@ const mdRule = config.module.rule("markdown").test(/\.md$/);
 applyVuePipeline(mdRule);
 ```
 
-cacheDirectory 和 cacheIdentifier 是 cacheloader 定义的配置，为了加快加载速度。这里只把 vue 文件和 md 文件作为 cache-loader 和 vue-loader 的目标文件，[vue-loader](https://vue-loader.vuejs.org/zh/options.html#cachedirectory-cacheidentifier)这里自带 cache 属性大概就是为了和 cache-loader 一起使用的。[cache-loader](https://www.webpackjs.com/loaders/cache-loader/)也做了配置。而其他的 loader 是无法做到和 cache 一起用的，所以能 cache 的只有 vue 相关的代码。有 vue 的代码就是 md 文件和 vue 后缀的文件。
+cacheDirectory 和 cacheIdentifier 是 cacheloader 定义的配置，为了加快加载速度。这里只把 vue 文件和 md 文件作为 cache-loader 和 vue-loader 的目标文件，[vue-loader](https://vue-loader.vuejs.org/zh/options.html#cachedirectory-cacheidentifier)、[cache-loader](https://www.webpackjs.com/loaders/cache-loader/)这边统一做了对 vue 和 md 文件的解析。
 
+::: tip
 cacheDirectory:/Users/~/vuepress-analysis/node_modules/@vuepress/core/node_modules/.cache/vuepress
+:::
 
 ### markdown-loader
 
@@ -142,7 +148,7 @@ dev 模式用 vue-style-loader，build 模式用 extract-css-loader，将多个 
 
 具体查看官网的[构建流程](https://v1.vuepress.vuejs.org/zh/config/#%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B)
 
-## plugin
+## 其他 wepback plugin
 
 ### DefinePlugin
 
@@ -159,7 +165,7 @@ config.plugin("injections").use(require("webpack/lib/DefinePlugin"), [
 
 常亮定义，`VUEPRESS_TEMP_PATH`这 2 个文件还有点用，是取 temp 文件路径，其他 2 个基本没什么用挂在在 windows 下面
 
-## hmr
+### hmr
 
 ```js
 config.plugin("hmr").use(require("webpack/lib/HotModuleReplacementPlugin"));
@@ -167,7 +173,7 @@ config.plugin("hmr").use(require("webpack/lib/HotModuleReplacementPlugin"));
 
 dev 的开发环境特有，用于热替换
 
-## html-webpack-plugin
+### html-webpack-plugin
 
 ```js
 config
@@ -183,7 +189,7 @@ config
 
 dev 开发环境特有，默认生成 html 模板文件
 
-## HeadPlugin
+### HeadPlugin
 
 dev 开发环境特有，用于修改 tag 标签数据
 
@@ -194,3 +200,13 @@ config.entry("app").add(ctx.getLibFilePath("client/clientEntry.js"));
 ```
 
 配置所有文件的入口，实例化 vue 的地方，和 vue-cli 的 main.js 比较像
+
+## 总结
+
+webpack 做的主要的几件事情
+
+- 配置@alias，配合后续的 aliasoption 共同使用
+- vue、md、css 等解析 loader 引入
+- 其他一些 webpack 插件以及 chainwebpack
+
+其实和 vue-cli 的内容差不多，只是分布的比较散，配置比较灵活；其实 vuepress 的 plugin 和 webpack 的 plugin 非常类似。这里的配置流程就是我们用 vuepress 的配置流程

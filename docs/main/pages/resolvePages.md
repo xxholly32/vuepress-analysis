@@ -1,5 +1,12 @@
 # resolvePages 解析
 
+主流程中 resolvepages 的解析
+
+```
+// 详见 resolvePages 章节
+await this.resolvePages()
+```
+
 ## pages 文件获取
 
 ```js
@@ -29,6 +36,8 @@ async resolvePages () {
 
 先是采用`globby`这个工具包获取在`['**/*.md', '**/*.vue', '!.vuepress', '!node_modules']`下的文件路径，加入到数组 pageFiles 中
 
+> 注意: 这里过滤了 node_modules
+
 ## pages 处理解析
 
 ```js
@@ -49,10 +58,13 @@ async addPage (options) {
 
 markdown: 是 markdown-chain-it 的配置
 
-computed: page 的整体解析器, 整合全局的 siteData 变量
+computed: ClientComputedMixinConstructor 的意思可以直接得出是客户端的一些 mixin 的处理
 
-enhancers: 返回还不是很确定，但 extendPageData 是[\$page 对象的扩展](https://v1.vuepress.vuejs.org/zh/plugin/option-api.html#extendpagedata)，如果不配置就是默认页面的内容。
+enhancers: extendPageData 是[\$page 对象的扩展](https://v1.vuepress.vuejs.org/zh/plugin/option-api.html#extendpagedata)，如果不配置就是默认页面的内容。也可能包含一些自己的 computed 等
 
+:::tip
+在 md 文件中是可以做 `$page.xxx = 'xxx'`输出的
+:::
 最终将所有解析完的页面放在 this.pages 下
 
 ```js
@@ -78,3 +90,15 @@ if (headers.length) {
 ```
 
 process 里面分了每章的段落，将 h2 和 h3 的段落做了提取。
+
+## 总结
+
+resolve 的流程：
+
+1. 获取所有 md 文件
+2. 加入 markdown，minix 和处理所有 pages 里面的公共变量
+
+### TODO:
+
+- h2 和 h3 的段落提取还没完全搞懂什么意思
+- proess 还需要深入解析一下

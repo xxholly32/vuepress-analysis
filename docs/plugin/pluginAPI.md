@@ -144,3 +144,7 @@ add (name, value) {
 ## 总结
 
 插件化是 vuepress 的主要设计理念，在关键模块的关键过程中引入了对应的对外接口，并加入了扩展的设计，并结合内部的 internal-plugin 配置去实现；1.0 也是讲插件系统做深入，把主题和布局抽离出来；还有一个理念是合理的优先级管理，用户的配置会高于默认的配置，
+
+::: tip
+webpack 的 plugin 和 vuepress 的类似，这里推荐一个[webpack 的官方文献](https://www.webpackjs.com/contribute/writing-a-plugin/#%E5%9F%BA%E6%9C%AC%E6%8F%92%E4%BB%B6%E6%9E%B6%E6%9E%84aa)；区别是 webpack 没有 apply 的 async 操作，是用 callback 去实现的。
+:::

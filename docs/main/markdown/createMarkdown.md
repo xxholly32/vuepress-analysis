@@ -15,20 +15,18 @@ md.render('# markdown-it rulezz!');
 
 这个逻辑和 es/tslint 一样，都有各自的规则，只不过 es/tslint 是将 es/ts 语言转化成 js，根据规则可以生产对应的 html 文件
 
-markdown-it 的文档理解起来会比较费劲，虽然已经有大神做了[整体翻译](https://markdown-it.docschina.org)，但还是无法理解的很全。一开始看 markdown 的同学可以看下相关的源码[解读文件](https://www.jianshu.com/p/a2c7cd1cabc7)
+:::tip
+markdown-it 的文档理解起来会比较费劲，虽然已经有大神做了[整体翻译](https://markdown-it.docschina.org)，但还是无法理解的很全。一开始看 markdown 的同学可以看下相关的[源码解析](https://www.jianshu.com/p/a2c7cd1cabc7)
+:::
 
-### 测试代码反推实现
+下面主要分析一下 vuepress 内置的一些 markdown 插件和一些个人理解,但实现代码我粗略看了下，过于复杂，就不细分析了，只是说下做了哪些功能和一些实现精髓，具体功能可以用测试代码来反推实现。
 
-下面我列举一下 vuepress 的一些实现，但实现代码我粗略看了下，过于复杂，就不细分析了，只是说下做了哪些功能和一些实现精髓，具体功能可以用测试代码来反推实现。
+> vuepress 中 [markdown 的主源码引入的 markdown-it 插件库](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/markdown/index.js)
 
-用测试反推实现是另一种理解 api 的方法，而且非常好用，你不用去了解代码，你会直接知道是怎么实现的，具体我们可以参考[sorrycc 的分享 通过写测试用例学习前端知识](https://www.bilibili.com/video/av44802599)
-
-我们这里可以直接参考[相关用例](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/markdown/__tests__/__snapshots__/highlight.spec.js.snap)结合测试一起看实现
-
-## 代码高亮
+## 代码块
 
 ```js
-new Vue()
+md.render(input)
 
 # 输出
 
@@ -42,10 +40,18 @@ exports[`highlight should highlight code 1`] = `
 <span class="token punctuation">)</span>
 </code>
 </pre>
-
+`
 ```
 
 代码高亮 这里用的是 `prismjs`， markdown-it 官方推荐的是 `highlight.js`
+
+:::tip
+测试代码反推实现
+
+用测试反推实现是另一种理解 api 的方法，而且非常好用，你不用去了解代码，你会直接知道是怎么实现的，具体我们可以参考[sorrycc 的分享 通过写测试用例学习前端知识](https://www.bilibili.com/video/av44802599)
+
+我们这里可以直接参考[相关用例](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/markdown/__tests__/__snapshots__/highlight.spec.js.snap)结合测试一起看代码高亮的实现
+:::
 
 ## 识别 vue 标签插件
 
@@ -53,7 +59,7 @@ exports[`highlight should highlight code 1`] = `
 
 这个插件是重写了官方的 [html_block](https://github.com/markdown-it/markdown-it/blob/1ad3aec2041cd2defa7e299543cc1e42184b680d/lib/rules_block/html_block.js) 插件，不同的是以下 2 行代码
 
-```js
+```js {7,8,9,10}
 const HTML_SEQUENCES = [
   [/^<(script|pre|style)(?=(\s|>|$))/i, /<\/(script|pre|style)>/i, true],
   [/^<!--/, /-->/, true],
@@ -73,7 +79,7 @@ const HTML_SEQUENCES = [
 ];
 ```
 
-[PascalCase Components 帕斯卡](https://baike.baidu.com/item/%E5%B8%95%E6%96%AF%E5%8D%A1%E5%91%BD%E5%90%8D%E6%B3%95/9464494?fr=aladdin)写法，和标准带连接符的控件；
+加入了[PascalCase Components 帕斯卡](https://baike.baidu.com/item/%E5%B8%95%E6%96%AF%E5%8D%A1%E5%91%BD%E5%90%8D%E6%B3%95/9464494?fr=aladdin)写法，和 vue 标准规范中带连接符的控件；
 
 ## 代码行高亮
 
@@ -172,6 +178,19 @@ const internalLinkAsserts = {
 这个内部变量是解析 script 和 style 并从文档中分离的。看下测试代码
 
 ```js
+# hoist.md
+# H1
+
+<script src="vue.js"></script>
+<style>
+  .vue {
+    font-size: 16px;
+  }
+</style>
+
+## H2
+
+
 test("Should miss script and style when using hoist", () => {
   const input = getFragment(__dirname, "hoist.md");
   const { html, data } = mdH.render(input);
