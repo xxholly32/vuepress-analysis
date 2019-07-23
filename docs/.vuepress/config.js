@@ -6,7 +6,7 @@ module.exports = {
     nav: [
       { text: "首页", link: "/" },
       {
-        text: "plugin",
+        text: "插件",
         link: "/plugin/pluginAPI"
       },
       {
@@ -46,7 +46,18 @@ module.exports = {
           title: "内置插件",
           path: "/plugin/",
           collapsable: false,
-          children: ["/plugin/internal-layout-components"]
+          children: [
+            "/plugin/internal-layout-components",
+            "/plugin/internal-page-components"
+          ]
+        }
+      ],
+      "/theme/": [
+        {
+          title: "主题系统",
+          path: "/theme/",
+          collapsable: false,
+          children: ["/theme/theme-analysis"]
         }
       ],
 

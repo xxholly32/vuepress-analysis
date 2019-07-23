@@ -1,6 +1,6 @@
 # webpackconfig
 
-前面还有部分乱码，截不全，主要看一些基础配置和`plugin`的配置
+前面还有部分乱码，截不全，这里是 webpack 配置的一些输出
 
 ```js
 /* config.module.rule('pug') */

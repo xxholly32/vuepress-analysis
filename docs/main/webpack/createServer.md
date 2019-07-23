@@ -1,5 +1,7 @@
 # createServer
 
+标注了 webpack 启动时候的一些配置信息说明
+
 ```js
 createServer () {
   const contentBase = path.resolve(this.context.sourceDir, '.vuepress/public')
@@ -57,6 +59,7 @@ createServer () {
     this.context.siteConfig.devServer || {}
   )
 
+  // https://webpack.js.org/guides/hot-module-replacement/#via-the-nodejs-api 这里和官方配置一样
   WebpackDevServer.addDevServerEntrypoints(this.webpackConfig, serverConfig)
 
   const compiler = webpack(this.webpackConfig)
@@ -65,5 +68,3 @@ createServer () {
 }
 
 ```
-
-## before after server
