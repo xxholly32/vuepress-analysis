@@ -1,5 +1,7 @@
 # plugin
 
+> 推荐一个个人实现的有关 ui 库的 vuepress-plugin [code-box](https://github.com/xxholly32/vuepress-plugin-code-box)
+
 ## 官方理念解读
 
 [插件](https://v1.vuepress.vuejs.org/zh/plugin/)，在不看源码只看功能，我的理解是做一些配置，加入一些`UI`等功能。但代码中巧妙的将所有的功能都做成了插件，有些只是内部插件，看起来是 vuepress 一体的，但内部还是通过引入插件的方式去完成的。官方也有附图去说明了一些现有的插件功能。

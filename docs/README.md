@@ -12,6 +12,8 @@ vuepress 首次出现在人们视野中是 [Evan You](https://github.com/yyx9908
 
 ## 为什么要做这个分析
 
+> "VuePress is much more than that." —— ULIVZ
+
 `vuepress`从一开始使用就觉得它解决了程序员的很多问题，现在个人，公司的 blog，api 文档我几乎都选择了`vuepress`，甚至是公司多个 UI 库的首页都是用的 `vuepress`。都说爱一个人要需要深入了解它的全部。不仅是能够熟练使用，也希望能够理解它的原理，更多的去分析作者为什么会这么写的，这么设计的。
 
 ## 相关主题演讲
@@ -30,7 +32,4 @@ vuepress 首次出现在人们视野中是 [Evan You](https://github.com/yyx9908
 
 - app.js 详细分析
 - 每次写完都要写总结
-- build 命令解析
-- theme 解析
-- inter 插件解析
 - TODO chacklist review
